@@ -1,21 +1,13 @@
-"""Camada de acesso ao banco SQLite.
-
-Aqui ficam TODAS as queries do app. Quem importa esse módulo (controllers)
-não sabe nem precisa saber que tem SQL por trás — se um dia a gente trocar
-SQLite por outro banco, só esse arquivo muda.
-"""
 import sqlite3
 
 from src.config.settings import DB_PATH
 
 
 def _conexao():
-    """Abre uma conexão nova com o banco. Função privada (prefixo _)."""
     return sqlite3.connect(DB_PATH)
 
 
 def inicializar_banco():
-    """Cria as tabelas caso ainda não existam. Roda no startup."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute(
@@ -27,7 +19,6 @@ def inicializar_banco():
         )
         """
     )
-    # Tabela de treinador: guardamos sempre uma única linha (id=1) com o nome.
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS treinador (
@@ -41,7 +32,6 @@ def inicializar_banco():
 
 
 def salvar_nome_treinador(nome: str):
-    """Cria ou atualiza o nome do treinador (sempre na linha id=1)."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute(
@@ -53,7 +43,6 @@ def salvar_nome_treinador(nome: str):
 
 
 def obter_nome_treinador():
-    """Retorna o nome do treinador, ou None se ainda não foi definido."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute("SELECT nome FROM treinador WHERE id = 1")
@@ -63,7 +52,6 @@ def obter_nome_treinador():
 
 
 def adicionar_favorito(pokemon_id: int, nome: str, sprite_url: str):
-    """Insere um Pokémon na tabela de favoritos (ignora se já existe)."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute(
@@ -75,7 +63,6 @@ def adicionar_favorito(pokemon_id: int, nome: str, sprite_url: str):
 
 
 def remover_favorito(pokemon_id: int):
-    """Remove um Pokémon dos favoritos pelo ID."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM favoritos WHERE id = ?", (pokemon_id,))
@@ -84,7 +71,6 @@ def remover_favorito(pokemon_id: int):
 
 
 def listar_favoritos():
-    """Retorna todos os favoritos ordenados por nome."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute("SELECT id, nome, sprite_url FROM favoritos ORDER BY nome")
@@ -97,7 +83,6 @@ def listar_favoritos():
 
 
 def eh_favorito(pokemon_id: int):
-    """Verifica se um Pokémon já está nos favoritos."""
     conn = _conexao()
     cursor = conn.cursor()
     cursor.execute("SELECT 1 FROM favoritos WHERE id = ?", (pokemon_id,))
