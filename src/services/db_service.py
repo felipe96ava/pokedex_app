@@ -1,6 +1,6 @@
 import sqlite3
 
-from src.config.settings import DB_PATH
+from src.config.config import DB_PATH
 
 def _conexao():
     return sqlite3.connect(DB_PATH)

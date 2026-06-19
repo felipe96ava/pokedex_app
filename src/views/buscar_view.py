@@ -1,8 +1,3 @@
-"""Tela de Busca.
-
-Fluxo: usuário digita nome/número → clica Buscar → controller chama o
-service da API → exibimos o card ou mensagem de erro.
-"""
 import flet as ft
 
 from src.components.pokemon_card import pokemon_card

@@ -1,12 +1,7 @@
-"""Componente visual reutilizável: cartão de Pokémon.
-
-Recebe um Pokemon e devolve um Card pronto pra ser usado em qualquer view.
-Aceita callbacks opcionais pro botão de favoritar.
-"""
 import flet as ft
 
 from src.models.pokemon import Pokemon
-from src.utils.formatters import cor_do_tipo
+from src.utils.cores import cor_do_tipo
 
 
 def pokemon_card(
@@ -22,7 +17,8 @@ def pokemon_card(
 
     badges_tipos = [
         ft.Container(
-            content=ft.Text(tipo.upper(), color=ft.Colors.WHITE, size=11, weight=ft.FontWeight.BOLD),
+            content=ft.Text(tipo.upper(), color=ft.Colors.WHITE, size=11,
+            weight=ft.FontWeight.BOLD),
             bgcolor=cor_do_tipo(tipo),
             padding=ft.Padding.symmetric(horizontal=10, vertical=4),
             border_radius=12,

@@ -249,7 +249,7 @@ Esse é quem fala HTTP com a PokéAPI. **Não tem nada de UI aqui** — só rece
 """Camada de comunicação com a PokéAPI."""
 import httpx
 
-from src.config.settings import POKEAPI_URL, TIMEOUT_API
+from src.config.config import POKEAPI_URL, TIMEOUT_API
 from src.models.pokemon import Pokemon
 
 
@@ -582,13 +582,13 @@ Componente visual reutilizável: recebe um `Pokemon` e devolve um `Card` pronto.
 import flet as ft
 
 from src.models.pokemon import Pokemon
-from src.utils.formatters import cor_do_tipo
+from src.utils.cores import cor_do_tipo
 
 
 def pokemon_card(
-    pokemon: Pokemon,
-    eh_favorito: bool = False,
-    on_favoritar=None,
+        pokemon: Pokemon,
+        eh_favorito: bool = False,
+        on_favoritar=None,
 ):
     icone = ft.Icons.FAVORITE if eh_favorito else ft.Icons.FAVORITE_BORDER
 
@@ -738,7 +738,7 @@ Rode `python main.py`, vá pra aba Buscar, digite "pikachu", clique. Deve aparec
 """Camada de acesso ao banco SQLite."""
 import sqlite3
 
-from src.config.settings import DB_PATH
+from src.config.config import DB_PATH
 
 
 def _conexao():

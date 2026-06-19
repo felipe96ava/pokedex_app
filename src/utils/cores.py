@@ -1,9 +1,4 @@
-"""Utilitário simples: mapeia tipo de Pokémon para uma cor.
-
-Mantido em utils/ porque é uma função sem regra de negócio, só transformação.
-"""
 import flet as ft
-
 
 CORES_POR_TIPO = {
     "fire":     ft.Colors.RED_400,
@@ -25,7 +20,6 @@ CORES_POR_TIPO = {
     "flying":   ft.Colors.LIGHT_BLUE_300,
     "normal":   ft.Colors.GREY_500,
 }
-
 
 def cor_do_tipo(tipo: str):
     return CORES_POR_TIPO.get(tipo.lower(), ft.Colors.GREY_500)

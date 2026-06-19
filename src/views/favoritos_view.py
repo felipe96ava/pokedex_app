@@ -1,8 +1,3 @@
-"""Tela de Favoritos.
-
-Lê os favoritos direto do banco via controller e mostra em grid 2 colunas,
-com rolagem infinita - adequado pra telas mobile.
-"""
 import flet as ft
 
 from src.controllers import favoritos_controller
@@ -48,7 +43,7 @@ def tela_favoritos(page: ft.Page):
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=4,
                         controls=[
-                            ft.Image(src=fav["sprite_url"], width=90, height=90),
+                            ft.Image(src=fav["sprite_url"], width=200, height=200),
                             ft.Text(
                                 fav["nome"],
                                 weight=ft.FontWeight.BOLD,

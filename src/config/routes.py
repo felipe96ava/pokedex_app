@@ -11,7 +11,6 @@ ROTAS = ["/", "/buscar", "/favoritos", "/perfil", "/config"]
 
 
 def resolver_rota(page: ft.Page, nav_bar: ft.NavigationBar):
-    """Decide qual tela renderizar com base em page.route."""
 
     if page.route in ROTAS:
         nav_bar.selected_index = ROTAS.index(page.route)

@@ -1,27 +1,12 @@
-"""Diálogo reutilizável pra pedir/editar o nome do treinador.
-
-Usado:
-- No primeiro acesso ao app (em main.py)
-- Na tela de Configurações, quando o usuário clica em "Alterar nome"
-"""
 import flet as ft
 
 from src.controllers import treinador_controller
-
 
 def abrir_dialog_treinador(
     page: ft.Page,
     primeira_vez: bool = False,
     ao_salvar=None,
 ):
-    """Abre um AlertDialog pedindo o nome do treinador.
-
-    Parâmetros:
-        page: a página do Flet.
-        primeira_vez: se True, o título muda pra "Bem-vindo" e o diálogo
-            não pode ser fechado sem salvar (modal=True, sem botão Cancelar).
-        ao_salvar: callback opcional chamado depois de salvar com sucesso.
-    """
     nome_atual = treinador_controller.obter_nome() or ""
 
     campo_nome = ft.TextField(

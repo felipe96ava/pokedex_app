@@ -2,10 +2,7 @@ import flet as ft
 
 from src.config.routes import ROTAS
 
-
 def criar_nav_bar(page: ft.Page):
-    """Monta a NavigationBar do app e liga o evento de troca de aba."""
-
     async def ao_mudar_aba(e):
         indice = e.control.selected_index
         await page.push_route(ROTAS[indice])

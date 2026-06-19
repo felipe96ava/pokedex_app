@@ -1,8 +1,3 @@
-"""Controller que orquestra a busca de Pokémon.
-
-Recebe input da UI (view), valida, delega ao service, devolve o resultado.
-"""
-from src.models.pokemon import Pokemon
 from src.services import pokeapi_service
 
 

@@ -3,7 +3,6 @@ import flet as ft
 from src.components.treinador_dialog import abrir_dialog_treinador
 from src.controllers import treinador_controller
 
-
 def tela_config(page: ft.Page):
     tema_escuro = page.theme_mode == ft.ThemeMode.DARK
 
